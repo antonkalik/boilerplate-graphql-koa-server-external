@@ -15,7 +15,6 @@ const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-  path: '/api/v1/graphql',
 });
 
 (async () => {
