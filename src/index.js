@@ -6,7 +6,7 @@ const { makeExecutableSchema } = require('@graphql-tools/schema');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
-async function server({ typeDefs, resolvers }) {
+(async () => {
   const app = new Koa();
   const httpServer = http.createServer();
   const apolloServer = new ApolloServer({
@@ -21,13 +21,9 @@ async function server({ typeDefs, resolvers }) {
   apolloServer.applyMiddleware({ app, path: '/api/v1/graphql' });
   httpServer.on('request', app.callback());
   await new Promise(resolve => httpServer.listen({ port: process.env.PORT }, resolve));
-  console.log(
-    `🚀 External Server ready at http://localhost:${process.env.PORT}${apolloServer.graphqlPath}`
-  );
+  console.log(`🚀 External server ready at http://localhost:${process.env.PORT}${apolloServer.graphqlPath}`);
 
   return { apolloServer, app };
-}
-
-server({ typeDefs, resolvers }).then(({ app }) => {
+})().then(({ app }) => {
   app.use(cors());
 });
