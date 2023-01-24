@@ -1,6 +1,5 @@
-const { gql } = require('apollo-server-koa');
-
-module.exports = gql`
+module.exports = `
+#graphql
   type Query {
     getItemsExternal: [DataExternalExample]
   }
