@@ -1,6 +1,6 @@
 const fakeData = {
-  id: 9999999,
-  label: 'Some Label From External',
+  id: 23124523423,
+  label: 'Some Label From External Server',
 };
 
 module.exports = {
