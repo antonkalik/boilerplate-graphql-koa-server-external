@@ -1,12 +1,13 @@
 const Koa = require('koa');
 const http = require('http');
+const { readFileSync } = require('fs');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
 const { ApolloServer } = require('@apollo/server');
 const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer');
 const { koaMiddleware } = require('@as-integrations/koa');
-const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
+const typeDefs = readFileSync('./src/schema.graphql', { encoding: 'utf-8' });
 
 const app = new Koa();
 const httpServer = http.createServer(app.callback());

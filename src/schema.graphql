@@ -1,0 +1,12 @@
+type Query {
+  getItemsExternal: [DataExternalExample]
+}
+
+type Mutation {
+  updateDataExternal(label: String!): DataExternalExample!
+}
+
+type DataExternalExample {
+  id: ID
+  label: String
+}
